@@ -5,9 +5,9 @@ pipeline {
     stage("Build") {
       steps {
         // Build the project with Maven
-        sh apt-get update
-        sh apt-get install maven
-        dh mvn -version
+        sh 'apt-get update'
+        sh 'apt-get install maven'
+        dh 'mvn -version'
         sh 'mvn package -DskipTests'
       }
     }

@@ -5,7 +5,7 @@ pipeline {
     stage("Build") {
       steps {
         // Build the project with Maven
-        dh 'mvn -version'
+        sh 'mvn -version'
         sh 'mvn package -DskipTests'
       }
     }

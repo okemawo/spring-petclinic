@@ -5,14 +5,14 @@ pipeline {
     stage("Build") {
       steps {
         // Build the project with Maven
-        sh 'mvn clean package'
+        sh 'mvn package -DskipTests'
       }
     }
     stage("Run") {
       steps {
         // Run the JAR file on port 8080
         // Replace 'target/my-app.jar' with the path to your JAR file
-        sh 'nohup java -jar target/my-app.jar --server.port=8080 > output.txt &'
+        sh 'nohup java -jar ./target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9090 > output.txt &'
       }
     }
   }

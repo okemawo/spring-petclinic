@@ -1,24 +1,18 @@
 pipeline {
   agent any
 
-  environment {
-    // FOO will be available in entire pipeline
-    FOO = "PIPELINE"
-  }
-
   stages {
-    stage("local") {
-      environment {
-        // BAR will only be available in this stage
-        BAR = "STAGE"
-      }
+    stage("Build") {
       steps {
-        sh 'echo "FOO is $FOO and BAR is $BAR"'
+        // Build the project with Maven
+        sh 'mvn clean package'
       }
     }
-    stage("global") {
+    stage("Run") {
       steps {
-        sh 'echo "FOO is $FOO and BAR is $BAR"'
+        // Run the JAR file on port 8080
+        // Replace 'target/my-app.jar' with the path to your JAR file
+        sh 'nohup java -jar target/my-app.jar --server.port=8080 > output.txt &'
       }
     }
   }

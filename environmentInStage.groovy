@@ -16,5 +16,12 @@ pipeline {
         sh 'nohup java -jar ./target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9090 > output.txt &'
       }
     }
+    stage('SonarQube analysis') {
+      steps {
+        withSonarQubeEnv('http://127.0.0.1:9000') {
+          sh "sonar-scanner"
+        }
+      }
+    }
   }
 }

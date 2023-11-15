@@ -7,11 +7,6 @@ pipeline {
         // Build the project with Maven
         sh 'mvn -version'
         sh 'mvn clean package -DskipTests'
-      }
-    }
-    stage("Run") {
-      steps {
-        // Run the JAR file on port 9090
         sh 'nohup java -jar ./target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9096 &'
       }
     }

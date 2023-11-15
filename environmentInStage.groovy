@@ -6,7 +6,6 @@ pipeline {
       steps {
         sh 'mvn -version'
         sh 'mvn clean package -DskipTests'
-        sh 'ls'
         sh 'pwd'
       }
     }

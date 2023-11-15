@@ -11,7 +11,7 @@ pipeline {
     }
     stage("Run") {
       steps {
-        sh 'nohup java -jar target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9098 &'
+        sh 'JENKINS_NODE_COOKIE=dontKillMe nohup java -jar target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9098 &'
       }
     }
   }

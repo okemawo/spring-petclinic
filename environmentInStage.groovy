@@ -8,7 +8,7 @@ pipeline {
         sh 'mvn -version'
         sh 'mvn clean package -DskipTests'
         sh 'ls'
-        sh 'nohup java -jar ./target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9096 &'
+        sh 'nohup java -jar ./target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9098 &'
       }
     }
   }

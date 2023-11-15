@@ -9,13 +9,6 @@ pipeline {
         sh 'mvn clean package -DskipTests'
       }
     }
-    stage('SonarQube analysis') {
-      steps {
-        withSonarQubeEnv('SonarQube') {
-          sh "sonar-scanner -X -Dsonar.host.url=${env.SONAR_URL} -Dsonar.login=${env.SONAR_TOKEN}"
-        }
-      }
-    }
     stage("Run") {
       steps {
         // Run the JAR file on port 9090

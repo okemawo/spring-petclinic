@@ -6,7 +6,7 @@
       command: docker cp target/spring-petclinic-3.1.0-SNAPSHOT.jar petclinic:~/
 
     - name: Run application
-      command: docker exec petclinic java -jar ~/spring-petclinic-3.1.0-SNAPSHOT.jar
+      command: docker exec petclinic nohup java -jar ~/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9090 &
   # tasks:
   #   - name: Pull Docker image
   #     docker_image:

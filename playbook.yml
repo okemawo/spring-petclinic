@@ -3,10 +3,10 @@
 
   tasks:
     - name: Copy JAR file into Docker container
-      command: docker cp path/to/your/jar/file your-container-name:/path/in/container
+      command: docker cp target/spring-petclinic-3.1.0-SNAPSHOT.jar petclinic:~/
 
     - name: Run application
-      command: docker exec petclinic java -jar /path/in/container
+      command: docker exec petclinic java -jar ~/spring-petclinic-3.1.0-SNAPSHOT.jar
   # tasks:
   #   - name: Pull Docker image
   #     docker_image:

@@ -7,6 +7,7 @@ pipeline {
         // Build the project with Maven
         sh 'mvn -version'
         sh 'mvn clean package'
+        stash(name: 'target', includes: 'target/**')
       }
     }
     // stage("Run") {
@@ -15,23 +16,24 @@ pipeline {
     //     sh 'JENKINS_NODE_COOKIE=dontKillMe nohup java -jar target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9090 &'
     //   }
     // }
-    stage('SonarQube analysis') {
-      steps {
-        withSonarQubeEnv('SonarQube') {
-          sh "sonar-scanner -X -Dsonar.host.url=${env.SONAR_URL} -Dsonar.login=${env.SONAR_TOKEN}"
-        }
-      }
-    }
+    // stage('SonarQube analysis') {
+    //   steps {
+    //     withSonarQubeEnv('SonarQube') {
+    //       sh "sonar-scanner -X -Dsonar.host.url=${env.SONAR_URL} -Dsonar.login=${env.SONAR_TOKEN}"
+    //     }
+    //   }
+    // }
     stage('Install Ansible') {
       steps {
         sh 'apt-get update && apt-get install -y ansible'
       }
     }
-    // stage('Ansible') {
-    //   steps {
-    //     // Run the Ansible playbook
-    //     sh 'ansible-playbook playbook.yml'
-    //   }
-    // }
+    stage('Ansible') {
+      steps {
+        unstash('target')
+        // Run the Ansible playbook
+        sh 'ansible-playbook playbook.yml'
+      }
+    }
   }
 }

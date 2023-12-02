@@ -27,11 +27,11 @@ pipeline {
         sh 'apt-get update && apt-get install -y ansible'
       }
     }
-    stage('Ansible') {
-      steps {
-        // Run the Ansible playbook
-        sh 'ansible-playbook playbook.yml'
-      }
-    }
+    // stage('Ansible') {
+    //   steps {
+    //     // Run the Ansible playbook
+    //     sh 'ansible-playbook playbook.yml'
+    //   }
+    // }
   }
 }

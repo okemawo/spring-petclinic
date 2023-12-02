@@ -2,10 +2,13 @@
 - hosts: localhost
 
   tasks:
+    - name: list child items
+      command: ls
     - name: Copy JAR file to host
       copy:
         src: target/spring-petclinic-3.1.0-SNAPSHOT.jar
         dest: ~/spring-petclinic-3.1.0-SNAPSHOT.jar
+        
     - name: Copy JAR file into Docker container
       command: docker cp ~/spring-petclinic-3.1.0-SNAPSHOT.jar petclinic:~/
 

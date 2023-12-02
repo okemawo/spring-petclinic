@@ -23,11 +23,11 @@ pipeline {
     //     }
     //   }
     // }
-    stage('Install Ansible') {
-      steps {
-        sh 'apt-get update && apt-get install -y ansible'
-      }
-    }
+    // stage('Install Ansible') {
+    //   steps {
+    //     sh 'apt-get update && apt-get install -y ansible'
+    //   }
+    // }
     stage('Ansible') {
       steps {
         unstash('target')

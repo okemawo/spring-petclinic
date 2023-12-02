@@ -1,0 +1,26 @@
+---
+- hosts: petclinic
+
+  tasks:
+    - name: Copy JAR file into Docker container
+      command: docker cp path/to/your/jar/file your-container-name:/path/in/container
+
+    - name: Run application
+      command: docker exec petclinic java -jar /path/in/container
+  # tasks:
+  #   - name: Pull Docker image
+  #     docker_image:
+  #       name: your-docker-image
+  #       source: pull
+
+  #   - name: Create Docker container
+  #     docker_container:
+  #       name: your-container-name
+  #       image: your-docker-image
+  #       state: started
+
+  #   - name: Copy JAR file into Docker container
+  #     docker_cp:
+  #       src: path/to/your/jar/file
+  #       dest: your-container-name:/path/in/container
+  #       direction: to

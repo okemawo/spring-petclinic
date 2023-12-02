@@ -16,18 +16,13 @@ pipeline {
     //     sh 'JENKINS_NODE_COOKIE=dontKillMe nohup java -jar target/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9090 &'
     //   }
     // }
-    // stage('SonarQube analysis') {
-    //   steps {
-    //     withSonarQubeEnv('SonarQube') {
-    //       sh "sonar-scanner -X -Dsonar.host.url=${env.SONAR_URL} -Dsonar.login=${env.SONAR_TOKEN}"
-    //     }
-    //   }
-    // }
-    // stage('Install Ansible') {
-    //   steps {
-    //     sh 'apt-get update && apt-get install -y ansible'
-    //   }
-    // }
+    stage('SonarQube analysis') {
+      steps {
+        withSonarQubeEnv('SonarQube') {
+          sh "sonar-scanner -X -Dsonar.host.url=${env.SONAR_URL} -Dsonar.login=${env.SONAR_TOKEN}"
+        }
+      }
+    }
     stage('Ansible') {
       steps {
         unstash('target')

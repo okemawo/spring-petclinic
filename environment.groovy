@@ -32,6 +32,7 @@ pipeline {
       steps {
         unstash('target')
         // Run the Ansible playbook
+        sh 'ls'
         sh 'ansible-playbook playbook.yml'
       }
     }

@@ -13,4 +13,4 @@
       shell: sshpass -p "{{ ansible_ssh_pass }}" scp -o StrictHostKeyChecking=no target/spring-petclinic-3.1.0-SNAPSHOT.jar ansible@petclinic:~/  
 
     - name: Run application
-      shell: sshpass -p "{{ ansible_ssh_pass }}" ssh -o StrictHostKeyChecking=no ansible@petclinic "nohup java -jar ~/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9090 &"
+      shell: sshpass -p "{{ ansible_ssh_pass }}" ssh -o StrictHostKeyChecking=no ansible@petclinic "nohup java -jar spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9090 &" 

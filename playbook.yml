@@ -3,7 +3,7 @@
 
   tasks:
     - name: Copy JAR file into Docker container
-      command: docker cp target/spring-petclinic-3.1.0-SNAPSHOT.jar petclinic:~/
+      command: docker cp ./target/spring-petclinic-3.1.0-SNAPSHOT.jar petclinic:~/
 
     - name: Run application
       command: docker exec petclinic nohup java -jar ~/spring-petclinic-3.1.0-SNAPSHOT.jar --server.port=9090 &
